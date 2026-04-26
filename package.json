@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "La Botte – Sito catalogo vini Chiavazza, Biella",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node server/index.js",
     "client": "cd client && npm run dev",
