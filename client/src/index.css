@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #c9a050;
+  --gold-light: #f0d990;
+  --gold-dark: #a8803a;
+  --bg: #050205;
+  --card-bg: #0f060e;
+  --cream: #f5edd6;
+  --muted: #8a7060;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--cream); font-family: 'Raleway', sans-serif; overflow-x: hidden; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0a0408; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+/* ── Gold utilities ── */
+.gold-text {
+  background: linear-gradient(135deg, #c9a050 0%, #f0d990 40%, #c9a050 60%, #a8803a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ── Glass card ── */
+.glass-card {
+  background: rgba(18, 6, 14, 0.88);
+  border: 1px solid rgba(201, 160, 80, 0.13);
+  backdrop-filter: blur(8px);
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), border-color 0.4s, box-shadow 0.4s;
+}
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 160, 80, 0.45);
+  box-shadow: 0 0 40px rgba(201,160,80,0.09), 0 20px 55px rgba(0,0,0,0.55);
+}
+
+/* ── Bottle glow ── */
+.bottle-glow {
+  filter:
+    drop-shadow(0 0 18px rgba(255,245,220,0.22))
+    drop-shadow(0 0 6px rgba(255,245,220,0.16))
+    drop-shadow(0 24px 32px rgba(0,0,0,0.7));
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), filter 0.5s;
+}
+.bottle-glow:hover {
+  transform: scale(1.06) translateY(-8px);
+  filter:
+    drop-shadow(0 0 30px rgba(255,245,220,0.38))
+    drop-shadow(0 0 12px rgba(201,160,80,0.28))
+    drop-shadow(0 30px 50px rgba(0,0,0,0.8));
+}
+.bottle-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(28px) } to { opacity:1; transform:translateY(0) } }
+@keyframes fadeIn   { from { opacity:0 } to { opacity:1 } }
+@keyframes float    { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-12px) } }
+@keyframes pulse    { 0%,100% { opacity:0.5 } 50% { opacity:1 } }
+@keyframes shimmer  { to { background-position: 200% center } }
+
+.anim-fade-up   { animation: fadeUp 0.6s ease both; }
+.anim-fade-in   { animation: fadeIn 0.25s ease both; }
+.delay-1 { animation-delay: 0.05s }
+.delay-2 { animation-delay: 0.12s }
+.delay-3 { animation-delay: 0.20s }
+.delay-4 { animation-delay: 0.28s }
+.delay-5 { animation-delay: 0.36s }
+.delay-6 { animation-delay: 0.44s }
+
+/* ── Modal ── */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center; padding: 12px;
+  background: rgba(2,1,3,0.94);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.2s ease;
+}
+.modal-box {
+  position: relative; width: 100%; max-width: 880px; max-height: 94vh;
+  background: #0b0410;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  animation: fadeUp 0.28s ease both;
+}
+
+/* ── Input reset ── */
+input, textarea, select {
+  color: var(--cream);
+  font-family: 'Raleway', sans-serif;
+  background: rgba(5,2,5,0.85);
+  border: 1px solid rgba(201,160,80,0.25);
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--gold);
+}
+
+/* ── Line clamp ── */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
